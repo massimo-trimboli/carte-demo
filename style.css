@@ -71,3 +71,8 @@ section{
 .carte{
     transition: transform 1s;
 }
+
+
+.carte-no-transit{
+    transition: none;
+}

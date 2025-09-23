@@ -53,7 +53,8 @@ function dealV2(){
     // console.log(cartes[i].getHTML());
     
     cartes[i].classList.remove("hidden")
-    //console.log(cartes[i].getBoundingClientRect());
+    let carteADeplacer = cartes[i];
+    carteADeplacer // juste afire quelle se deplace à la fin un sort ou qqch dememe
 
     let paq = document.querySelector(".paquet");
     vroom(cartes[i], paq);
@@ -69,13 +70,13 @@ function vroom(elm1, elm2){
         y: elm2.getBoundingClientRect().y
     };
 
-    // console.log(p1.x);
-    // console.log(p2.x);
-    // console.log("deplacement x: ");
-    console.log(p1.x - p2.x);
+    elm1.classList.add("carte-no-transit");
+    elm1.style.transform = `translate(${p2.x - p1.x}px,${p2.y - p1.y}px)`;
 
+    //delay
+    setTimeout(() => {
+        elm1.classList.remove("carte-no-transit");
+        elm1.style.transform = `translate(${0}px,${0}px)`;
 
-
-    elm1; //change translate style
-    //do it later
+    }, "1");
 }
