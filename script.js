@@ -46,6 +46,7 @@ function newCard(num){
 
 
 function dealV2(){
+    //cartes choisies alléatoirement
     let cartes = document.querySelectorAll(".carte.hidden");
     let i = Math.random() * cartes.length;
     i = Math.floor(i);
@@ -54,16 +55,17 @@ function dealV2(){
     // console.log(cartes[i].getHTML());
     
     cartes[i].classList.remove("hidden")
-    let carteADeplacer = cartes[i];
-    carteADeplacer // juste afire quelle se deplace à la fin un sort ou qqch dememe
 
+    //sortir les cartes du paquet
     let section = document.querySelector("section");
     section.append(cartes[i]);
 
+    // deplacer les cartes
     let paq = document.querySelector(".paquet");
     vroom(cartes[i], paq);
 }
 
+// fonction pour deplacer les cartes
 function vroom(elm1, elm2){
     let p1 = {
         x: elm1.getBoundingClientRect().x,
@@ -74,9 +76,11 @@ function vroom(elm1, elm2){
         y: elm2.getBoundingClientRect().y
     };
 
+    //déplacer les cartes au paquet sanstransition
     elm1.classList.add("carte-no-transit");
     elm1.style.transform = `translate(${p2.x - p1.x}px,${p2.y - p1.y}px)`;
 
+    // raporter les cartes ou elles doivent etre avec une transition
     //delay
     setTimeout(function() {
         elm1.classList.remove("carte-no-transit");
