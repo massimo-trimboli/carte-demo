@@ -7,7 +7,7 @@ if(amount > 1){
 }
 
 // document.querySelector(".paquet #deal").addEventListener("click", deal);
-document.querySelector(".paquet #deal").addEventListener("click", dealV2);
+document.querySelector("#deal").addEventListener("click", dealV2);
 
 
 
@@ -63,6 +63,11 @@ function dealV2(){
     // deplacer les cartes
     let paq = document.querySelector(".paquet");
     vroom(cartes[i], paq);
+
+    // retourner les cartes automatiquement
+    setTimeout(function(){
+        cartes[i].classList.add("turned");
+    }, "700");
 }
 
 // fonction pour deplacer les cartes
