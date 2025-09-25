@@ -6,8 +6,8 @@ if(amount > 1){
     }
 }
 
-// document.querySelector(".paquet #deal").addEventListener("click", deal);
-document.querySelector("#deal").addEventListener("click", dealV2);
+document.querySelector("#deal").addEventListener("click", deal);
+document.querySelector("#deal-2").addEventListener("click", dealAll);
 
 
 
@@ -29,30 +29,39 @@ function newCard(num){
     paquet.innerHTML += code;
 }
 
+function dealAll() {
+    let cartes = document.querySelectorAll(".carte.hidden");
+    let delay = 15;
+    let i = 0;
+    let frame = 0;
 
-// unused
-// function deal(){
-//     let cartes = document.querySelectorAll(".paquet .carte");
-//     let i = Math.random() * cartes.length;
-//     i = Math.floor(i);
+    function dealAllRAF(){
+        if(i >= cartes.length){
+            return
+        }
 
-//     //console.log(cartes[i] + "  "+ i);
-//     //console.log(cartes[i].getHTML());
+        if(frame == 0){
+            deal();
+            i++;
+        }
 
-//     let section = document.querySelector("section");
-//     section.append(cartes[i]);
-// }
+        frame++;
+        //loop back to 0
+        if(frame >= delay){
+            frame = 0;
+        }
+        requestAnimationFrame(dealAllRAF);
+    }
+    requestAnimationFrame(dealAllRAF);
+}
 
 
 
-function dealV2(){
+function deal(){
     //cartes choisies alléatoirement
     let cartes = document.querySelectorAll(".carte.hidden");
     let i = Math.random() * cartes.length;
     i = Math.floor(i);
-
-    // console.log(cartes[i] + "  "+ i);
-    // console.log(cartes[i].getHTML());
     
     cartes[i].classList.remove("hidden")
 

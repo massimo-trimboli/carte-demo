@@ -12,7 +12,7 @@ section{
     justify-content: flex-start;
     align-items: center;
 }
-#deal{
+#deal,#deal-2{
     background-color: blue;
     color: white;
     width: fit-content;
