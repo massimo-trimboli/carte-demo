@@ -34,7 +34,10 @@ section{
     transform: rotate3d(0, 0, 0, 180deg);
     transition: transform .7s;
 }
-.carte:hover .container{
+/* .carte:hover .container{
+    transform: rotate3d(0, 1, 0, 180deg);
+} */
+.carte.turned .container{
     transform: rotate3d(0, 1, 0, 180deg);
 }
 .carte .back,.front{
@@ -67,6 +70,7 @@ section{
 
 .carte.hidden{
     position: absolute;
+    opacity: 0;
 }
 .carte{
     transition: transform 1s;

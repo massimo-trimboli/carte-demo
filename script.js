@@ -18,7 +18,7 @@ document.querySelector(".paquet #deal").addEventListener("click", dealV2);
 
 function newCard(num){
     // let paquet = document.querySelector("section .paquet");
-    let paquet = document.querySelector("section");
+    let paquet = document.querySelector("section .paquet");
     let code = '<div class="carte hidden">' + 
                     '<div class="container">' +
                         '<div class="front"><h2>projet</h2><h3>'+ num +'</h3></div>' + 
@@ -30,17 +30,18 @@ function newCard(num){
 }
 
 
-function deal(){
-    let cartes = document.querySelectorAll(".paquet .carte");
-    let i = Math.random() * cartes.length;
-    i = Math.floor(i);
+// unused
+// function deal(){
+//     let cartes = document.querySelectorAll(".paquet .carte");
+//     let i = Math.random() * cartes.length;
+//     i = Math.floor(i);
 
-    //console.log(cartes[i] + "  "+ i);
-    //console.log(cartes[i].getHTML());
+//     //console.log(cartes[i] + "  "+ i);
+//     //console.log(cartes[i].getHTML());
 
-    let section = document.querySelector("section");
-    section.append(cartes[i]);
-}
+//     let section = document.querySelector("section");
+//     section.append(cartes[i]);
+// }
 
 
 
@@ -55,6 +56,9 @@ function dealV2(){
     cartes[i].classList.remove("hidden")
     let carteADeplacer = cartes[i];
     carteADeplacer // juste afire quelle se deplace à la fin un sort ou qqch dememe
+
+    let section = document.querySelector("section");
+    section.append(cartes[i]);
 
     let paq = document.querySelector(".paquet");
     vroom(cartes[i], paq);
@@ -74,9 +78,8 @@ function vroom(elm1, elm2){
     elm1.style.transform = `translate(${p2.x - p1.x}px,${p2.y - p1.y}px)`;
 
     //delay
-    setTimeout(() => {
+    setTimeout(function() {
         elm1.classList.remove("carte-no-transit");
         elm1.style.transform = `translate(${0}px,${0}px)`;
-
     }, "1");
 }
