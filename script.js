@@ -45,11 +45,7 @@ function dealAll() {
             i++;
         }
 
-        frame++;
-        //loop back to 0
-        if(frame >= delay){
-            frame = 0;
-        }
+        frame = frame++ % delay;
         requestAnimationFrame(dealAllRAF);
     }
     requestAnimationFrame(dealAllRAF);
